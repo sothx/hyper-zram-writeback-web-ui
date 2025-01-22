@@ -57,7 +57,7 @@ else
   ui_print "- Magisk 版本: $MAGISK_VER_CODE"
 fi
 
-if [[ "$is_need_patch_dm_opt" == 1 && "$API" -ge 35 ]]; then
+if [[ "$API" -ge 35 ]]; then
   ui_print "*********************************************"
   ui_print "- 是否启用dm设备映射器？"
   ui_print "  音量+ ：是"
