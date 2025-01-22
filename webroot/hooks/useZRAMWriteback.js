@@ -14,6 +14,10 @@ export function useZRAMWriteback() {
 	const totalRead = ref(0);
 
 	onMounted(async () => {
+		const [, getMiuiExtmDmOptEnableResolve] = await $to(deviceApi.getMiuiExtmDmOptEnable());
+		if (getMiuiExtmDmOptEnableResolve === 'true')  {
+			miuiExtmDmOptEnable.value = true
+		}
 		const [, getBackingDevResolve] = await $to(deviceApi.getBackingDev());
 		if (getBackingDevResolve) {
 			backingDev.value = getBackingDevResolve

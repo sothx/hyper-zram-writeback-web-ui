@@ -50,3 +50,18 @@ export const getBackingDev = () => {
 		}
 	})
 }
+
+export const getMiuiExtmDmOptEnable = () => {
+	const shellCommon = `getprop persist.miui.extm.dm_opt.enable`;
+	return handlePromiseWithLogging(
+		new Promise(async (resolve, reject) => {
+			if (webConfig.env === 'dev') {
+				resolve(`true`);
+			} else {
+				const { errno, stdout, stderr } = (await exec(shellCommon))
+				errno ? reject(stderr) : resolve(stdout);
+			}
+		}),
+		shellCommon,
+	);
+}
